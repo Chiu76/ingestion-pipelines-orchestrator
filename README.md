@@ -72,6 +72,6 @@ log_messages = {
 
 Wrapper `self.log_info()` method for logging (via `logger` library) can call log messages defined in a dictionary using their keys.
 
-`self.vars` is a dict containing any task variables or flags. Its values are stored in the task execution details, and additionally printed after task execution.
+`self.vars` is a dict containing any task variables or flags. Its values are stored in the task runs database table, and additionally the values are printed after task execution.
 
 `self.status` must be set during task execution to either: TaskStatus.SUCCESS, TaskStatus.FAILED, TaskStatus.SKIPPED.
