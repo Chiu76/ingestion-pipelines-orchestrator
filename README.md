@@ -3,15 +3,22 @@
 Lightweight orchestrator library for running custom tasks in data ingestion pipelines.
 Created for further personal use.
 
+```
+$ python .\app\tests.py
+
+precheck__ success {'precheck_var': 'value'}
+INFO:job___0:task__:TASK_START: start_task
+INFO:job___0:task__:TASK_END: end_task
+task__ success {'task_var': 'value'}
+```
+
 
 A `Job` executes one or more `Task`s.
 
-```
+```python
 from orchestrator.job import Job
-
 from templates.precheck_template import init_precheck__
 from templates.task_template import init_task__
-
 
 def run_job__():
     job = Job('job__')
@@ -25,7 +32,7 @@ def run_job__():
 
 Task execution details are stored in a local database, defined in `db.py`:
 
-```
+```python
 db_file_path = PROJECT_DIR / 'db.sqlite'
 ```
 
@@ -34,16 +41,9 @@ db_file_path = PROJECT_DIR / 'db.sqlite'
 
 A task is defined as below. 
 
-Wrapper `self.log_info()` method for logging (via `logger` library) can call log messages defined in a dictionary using their keys.
-
-`self.vars` is a dict containing any task variables or flags. Its values are stored in the task execution details, and additionally printed after task execution.
-
-`self.status` must be set during task execution to either: TaskStatus.SUCCESS, TaskStatus.FAILED, TaskStatus.SKIPPED.
-
-```
+```python
 from orchestrator.task import Task
 from orchestrator.schemas import TaskStatus
-
 
 def init_task__(force_refresh: bool = False):
     return Task(
@@ -52,7 +52,6 @@ def init_task__(force_refresh: bool = False):
         log_messages,
         force_refresh=force_refresh,
     )
-
 
 def fn(self: Task, force_refresh: bool = False):
     self.log_info('start_task')
@@ -65,17 +64,14 @@ def fn(self: Task, force_refresh: bool = False):
 
     self.log_info('end_task')
 
-
 log_messages = {
     'start_task': 'TASK_START: start_task',
     'end_task': 'TASK_END: end_task',
 }
 ```
 
-```
-python .\app\tests.py
-precheck__ success {'precheck_var': 'value'}
-INFO:job___0:task__:TASK_START: start_task
-INFO:job___0:task__:TASK_END: end_task
-task__ success {'task_var': 'value'}
-```
+Wrapper `self.log_info()` method for logging (via `logger` library) can call log messages defined in a dictionary using their keys.
+
+`self.vars` is a dict containing any task variables or flags. Its values are stored in the task execution details, and additionally printed after task execution.
+
+`self.status` must be set during task execution to either: TaskStatus.SUCCESS, TaskStatus.FAILED, TaskStatus.SKIPPED.
