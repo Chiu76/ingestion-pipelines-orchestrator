@@ -5,10 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ingestion-pipelines-orchestrator"
 version = "1.0.0"
-+dynamic = ["dependencies"]
-
-[tool.setuptools.dynamic]
-+dependencies = { file = ["requirements.txt"] }
+dependencies = [
+    "SQLAlchemy==2.0.52",
+]
 
 [tool.setuptools.packages.find]
-where = ["./app/"]
+where = ["./src/"]
