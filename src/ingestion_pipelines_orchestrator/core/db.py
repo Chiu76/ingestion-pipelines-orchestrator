@@ -30,7 +30,7 @@ engine = create_engine(
 SessionMaker = sessionmaker(engine)
 
 
-from models import TaskRun
+from .models import TaskRun
 
 if not db_file_path.exists():
     Model.metadata.create_all(engine)

@@ -4,7 +4,7 @@ Lightweight orchestrator library for running custom tasks in data ingestion pipe
 Created for further personal use.
 
 ```
-$ python .\app\tests.py
+$ python -m src.ingestion_pipelines_orchestrator.tests
 
 precheck__ success {'precheck_var': 'value'}
 INFO:job___0:task__:TASK_START: start_task

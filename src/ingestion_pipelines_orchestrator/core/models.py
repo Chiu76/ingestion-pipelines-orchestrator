@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import String, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 
-from db import Model
+from .db import Model
 
 
 class TaskRun(Model):

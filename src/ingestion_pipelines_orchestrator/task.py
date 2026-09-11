@@ -4,11 +4,11 @@ from typing import Callable
 from datetime import datetime, timezone
 import json
 
-from db import SessionMaker
-from models import TaskRun
+from .core.db import SessionMaker
+from .core.models import TaskRun
 
-from orchestrator import Job
-from orchestrator.schemas import TaskStatus
+from .job import Job
+from .schemas import TaskStatus
 
 
 class Task():

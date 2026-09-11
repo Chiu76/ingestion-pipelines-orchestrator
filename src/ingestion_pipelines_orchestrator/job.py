@@ -1,8 +1,5 @@
 import itertools
 
-from sqlalchemy.orm import Session
-
-from orchestrator import *
 from .schemas import TaskStatus
 
 
@@ -14,7 +11,8 @@ class Job():
         self.name = name
 
         self.id: str = self._get_job_id()
-        self.to_execute: list[Task] = []
+        # list of Task instances
+        self.to_execute: list = []
 
     def set_to_execute(self, to_execute: list):
         self.to_execute = to_execute

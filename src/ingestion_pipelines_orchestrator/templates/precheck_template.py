@@ -1,5 +1,5 @@
-from orchestrator.task import Task
-from orchestrator.schemas import TaskStatus
+from ..task import Task
+from ..schemas import TaskStatus
 
 
 def init_precheck__():

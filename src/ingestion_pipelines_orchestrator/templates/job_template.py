@@ -1,7 +1,7 @@
-from orchestrator.job import Job
+from ..job import Job
 
-from templates.precheck_template import init_precheck__
-from templates.task_template import init_task__
+from .precheck_template import init_precheck__
+from .task_template import init_task__
 
 
 def run_job__():
