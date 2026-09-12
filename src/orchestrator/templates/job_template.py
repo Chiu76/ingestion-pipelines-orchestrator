@@ -1,4 +1,4 @@
-from ..job import Job
+from ..orchestrator import Job
 
 from .precheck_template import init_precheck__
 from .task_template import init_task__
