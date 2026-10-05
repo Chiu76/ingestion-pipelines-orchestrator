@@ -20,7 +20,6 @@ class TaskStatus(StrEnum):
     DEPENDENCY_FAILED = 'dependency_failed'
 
 
-
 class Job():
     id_iter = itertools.count()
     def _get_job_id(self) -> str: return f'{self.name}_{str(next(Job.id_iter))}'
@@ -36,6 +35,7 @@ class Job():
         self.to_execute = to_execute
 
     def run(self):
+        print(f'Starting job: {self.id}')
         continue_running_flag = True
         for task in self.to_execute:
             if continue_running_flag:
@@ -48,6 +48,10 @@ class Job():
                 task.status = TaskStatus.DEPENDENCY_FAILED
                 task.vars = {}
                 print(task.name, task.status, task.vars)
+        if continue_running_flag:
+            print('Job execution completed successfully\n')
+        else:
+            print('Job execution failed\n')
 
 
 class Task():

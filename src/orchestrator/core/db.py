@@ -20,6 +20,7 @@ PROJECT_DIR = APP_DIR.parent
 db_file_name = 'db.sqlite'
 db_file_path = PROJECT_DIR / 'db.sqlite'
 
+## todo: this leaves the file in the venv installed package directory after uninstalling
 DATABASE_URL = f'sqlite:///{db_file_path}'
 
 engine = create_engine(
